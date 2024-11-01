@@ -3,20 +3,18 @@
 #include <stdlib.h>
 
 char array[100][50] = {};
-char endCommand[] = "end\n";
 
 void calculate(int sizeOfArray) {
     int actNumber = 0;
-    long int plus = 0;
-    long int mean;
+    double plus = 0;
+    double mean;
     
     while(actNumber != sizeOfArray) {
-        plus += atol(array[actNumber]);
+        plus += atof(array[actNumber]);
         actNumber++;
-
     }
     mean = plus / sizeOfArray;
-    printf("A média é: %ld", mean);
+    printf("A média é: %.2lf", mean);
 
 }
 int main() {
@@ -29,7 +27,7 @@ int main() {
             fgets(array[actNumber],50,stdin);
         }
 
-        if (strcmp(array[actNumber], endCommand) == 0) {
+        if (strcmp(array[actNumber], "end\n") == 0) {
             break;
         }
         actNumber++;
