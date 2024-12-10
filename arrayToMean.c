@@ -2,39 +2,27 @@
 #include <string.h>
 #include <stdlib.h>
 
-char array[100][50] = {};
+char numbers[100][100];
 
-void calculate(int sizeOfArray) {
-    int actNumber = 0;
+void calculate(int totalNumbers) {
+    int actElement = 0;
     double plus = 0;
-    double mean;
-    
-    while(actNumber != sizeOfArray) {
-        plus += atof(array[actNumber]);
-        actNumber++;
-    }
-    mean = plus / sizeOfArray;
-    printf("A média é: %.2lf", mean);
-
+    while (actElement != totalNumbers) {
+        plus = plus + atof(numbers[actElement]);
+        actElement++;
+    }   
+    printf("Media: %.2lf", plus / totalNumbers);
 }
 int main() {
     int actNumber = 0;
-    printf("Digite os valores números para a calculação da média (Digite \"end\" para avançar)\n");
+    printf("Digite os numeros para o calculo da media (Enter sem nenhum numero iniciara a proxima etapa)\n");
     while (1) {
-        fgets(array[actNumber],50,stdin);
-        while (strcmp(array[actNumber], "\n") == 0) {
-            printf("O programa não recebeu nenhum número, escreva-o novamente:\n");
-            fgets(array[actNumber],50,stdin);
-        }
-
-        if (strcmp(array[actNumber], "end\n") == 0) {
+        fgets(numbers[actNumber], 100, stdin);
+        if(strcmp(numbers[actNumber], "\n") == 0) {
             break;
         }
         actNumber++;
-
     }
-
     calculate(actNumber);
-
     return 0;
 }
